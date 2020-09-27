@@ -26,7 +26,7 @@ for (var i = 1; i <= 50; i++) {
   rows.push(<div>test vertical scroll {i} inside container that flexes with browser resizing</div>)
 }
 
-const PaperScrollDemo = props => {
+const ScrollInsideContainer = props => {
   const classes = useStyles(props)
   return (
     <Paper className={classes.root}>
@@ -38,4 +38,4 @@ const PaperScrollDemo = props => {
   )
 }
 
-export default PaperScrollDemo
+export default ScrollInsideContainer

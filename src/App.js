@@ -12,8 +12,8 @@ import { Helmet } from 'react-helmet'
 // import Button from '@material-ui/core/Button'
 
 import Header from './Header'
-import Home from './Home'
-import Footer from './Footer'
+// import Home from './Home'
+// import Footer from './Footer'
 
 import ScrollInsideContainer from './components/ScrollInsideContainer'
 
@@ -36,30 +36,49 @@ const theme = createMuiTheme({
   },
 })
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: 1,
-    minHeight: '100vh',
-    backgroundColor: '#0087be',
-  },
+const useStyles = makeStyles(
+  theme => ({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      flexGrow: 1,
+      minHeight: '100vh',
+      backgroundColor: '#0087be',
+    },
 
-  content: {
-    // backgroundColor: theme.palette.primary.dark,
-    backgroundColor: '#282c34', // default overrides don't work here?
-    display: 'flex',
-    flexGrow: 1,
+    container: {
+      display: 'flex',
+      flex: '1 0 auto',
+      background: 'blue',
+      width: '100%',
 
-    // Position fixed tip: https://stackoverflow.com/a/4069794
-    position: 'fixed',
-    top: theme.spacing(8),
-    bottom: theme.spacing(8),
-    width: '100vw',
-    justifyContent: 'center',
-    overflow: 'auto', // scroll if necessary on all scrolling demo pages
-  },
-}))
+      justifyContent: 'center',
+      alignItems: 'center',
+
+      minHeight: 0,
+
+      overflow: 'auto',
+    },
+
+    // innerContainer: {
+    //   display: 'flex',
+    //   flexDirection: 'column',
+
+    //   // backgroundColor: theme.palette.primary.dark,
+    //   backgroundColor: 'blue', // default overrides don't work here?
+    //   flexGrow: 1,
+
+    //   // Position fixed tip: https://stackoverflow.com/a/4069794
+    //   // position: 'fixed',
+    //   // top: theme.spacing(8),
+    //   // bottom: theme.spacing(8),
+    //   width: '100vw',
+    //   justifyContent: 'center',
+    //   overflow: 'auto', // scroll if necessary on all scrolling demo pages
+    // },
+  }),
+  { name: 'App' }
+)
 
 const App = props => {
   const classes = useStyles(props)
@@ -80,12 +99,12 @@ const App = props => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          <div className={classes.root}>
+          <div className={classes.outerContainer}>
             <Switch>
               <Route path="/" component={Header} />
             </Switch>
 
-            <main className={classes.content}>
+            <main className={classes.container}>
               <Switch>
                 <Route exact path="/" component={ScrollInsideContainer} />
                 <Route path="/scroll-inside-container" component={ScrollInsideContainer} />
@@ -96,9 +115,9 @@ const App = props => {
               </Switch>
             </main>
 
-            <Switch>
+            {/* <Switch>
               <Route path="/" component={Footer} />
-            </Switch>
+            </Switch> */}
           </div>
         </Router>
       </ThemeProvider>

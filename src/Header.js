@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 const Header = props => {
   const classes = useStyles(props)
 
-  const [name, setName] = useState('MASAO')
+  const [name] = useState('MASAO')
 
   console.log('RENDERING HEADER')
 
